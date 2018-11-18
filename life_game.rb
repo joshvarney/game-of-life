@@ -120,12 +120,10 @@ class Change_state
         update_array << false
       elsif true_count == 3
         update_array << true
+      elsif state == true && true_count == 2
+        update_array << true
       elsif state == false && true_count != 3
         update_array << false
-      elsif state == true
-        update_array << true
-      elsif state == false
-        update_array << false    
       end  
     end
     @array = update_array
@@ -148,8 +146,8 @@ class Playing_game
       iterations(array)
     end
     system "cls"
-    updated_grid = Grid_builder.new(array).grid
-    puts updated_grid
+    last_grid = Grid_builder.new(array).grid
+    puts last_grid
     puts "Game Over"
   end
 end
