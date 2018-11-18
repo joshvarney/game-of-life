@@ -14,6 +14,7 @@ class Starting_array
   end
   attr_reader :array
 end
+
 class Grid_builder
   def initialize(array)
     build_grid(array)
@@ -170,4 +171,3 @@ class Start_game
 end
 
 Start_game.new
-
