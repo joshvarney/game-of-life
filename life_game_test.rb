@@ -50,6 +50,8 @@ class Test_Life_Game <Minitest::Test
   # def test_that_8_has_correct_neighbors
   #   assert_equal([7, 5, 4], find_neighbors(8, game_array(3)))
   # end
-  def tes
-       
+  def test_that_can_switch_correctly
+    array = [true, true, false, false, true, false, false, false, true]
+    assert_equal([true, true, false, true, true, true, false,false, false], Change_state.new(array).array )
+  end     
 end

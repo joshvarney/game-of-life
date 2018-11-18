@@ -105,13 +105,10 @@ class Change_state
     update_array = []
     array.each_with_index do |state, index|
       true_count = 0
-      false_count = 0
       neighbors = Build_neighbor_array.new(index, array).neighbor_array
       neighbors.each do |element|
         if array[element] == true
           true_count += 1
-        else
-          false_count += 1
         end          
       end
       if state == true && true_count < 2
@@ -124,7 +121,7 @@ class Change_state
         update_array << true
       elsif state == false && true_count != 3
         update_array << false
-      end  
+      end 
     end
     @array = update_array
   end
@@ -136,19 +133,19 @@ class Playing_game
     iterations(array)
   end
   def iterations(array)
-    unless array.include?(true) == false
+    if array.include?(true)
       updated_array = Change_state.new(array).array
-      updated_grid = Grid_builder.new(array).grid
+      updated_grid = Grid_builder.new(updated_array).grid
       system "cls"
       puts updated_grid
       sleep 2
-      array = updated_array
-      iterations(array)
-    end
-    system "cls"
-    last_grid = Grid_builder.new(array).grid
-    puts last_grid
-    puts "Game Over"
+      iterations(updated_array)
+    else
+      system "cls"
+      last_grid = Grid_builder.new(array).grid
+      puts last_grid
+      puts "Game Over"
+    end  
   end
 end
 
